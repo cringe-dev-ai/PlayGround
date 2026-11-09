@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101513" />
+  <title>ASHEN — The Hollow March</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="world"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>ASHEN</span><i>THE HOLLOW MARCH</i></div>
+      <div class="chapter">CHAPTER I <span>·</span> THE DROWNED WOOD</div>
+      <button id="pause-btn" class="icon-btn" aria-label="Pause"><span>Ⅱ</span></button>
+    </header>
+    <section class="hud-left" aria-label="Character status">
+      <div class="portrait"><span>V</span><small>WANDERER</small></div>
+      <div class="bars">
+        <div class="bar-row health"><span class="bar-icon">✦</span><div class="bar-track"><div id="health-fill" class="bar-fill"></div><b id="health-value">100</b></div></div>
+        <div class="bar-row stamina"><span class="bar-icon">◈</span><div class="bar-track"><div id="stamina-fill" class="bar-fill"></div></div></div>
+        <div class="bar-row focus"><span class="bar-icon">◇</span><div class="bar-track"><div id="focus-fill" class="bar-fill"></div></div></div>
+      </div>
+      <div class="level">LV <b>12</b></div>
+    </section>
+    <section class="objective"><span class="objective-line"></span><div><small>YOUR PURPOSE</small><p>Find the source of the <em>ashen blight</em></p></div></section>
+    <section class="bottom-left"><div class="resource"><span class="rune-icon">◉</span><b id="souls">1,240</b><small>SHARDS</small></div><div class="quick-items"><div class="flask"><span>♜</span><b id="flasks">3</b></div><small>EMBER<br>FLASK</small></div></section>
+    <div class="boss-hud" id="boss-hud"><div class="boss-name"><span>☠</span><div><small>THE FORGOTTEN SENTINEL</small><b>ASHEN WARDEN</b></div><i>✦</i></div><div class="boss-track"><div id="boss-fill"></div></div></div>
+    <div class="lock-indicator" id="lock-indicator"><span>⊙</span> LOCKED ON</div>
+    <div class="combat-feed" id="combat-feed"></div>
+    <div class="controls-hint" id="controls-hint"><span>WASD</span> MOVE <i>·</i> <span>SPACE</span> DODGE <i>·</i> <span>LMB</span> ATTACK <i>·</i> <span>Q</span> LOCK</div>
+    <div class="interact-prompt" id="interact-prompt"><kbd>E</kbd><span>REST AT THE ASHEN SHRINE</span></div>
+    <div class="crosshair" id="crosshair">◉</div>
+    <div class="mobile-controls" id="mobile-controls">
+      <div class="stick-zone" id="stick-zone"><div class="stick" id="stick"></div></div>
+      <div class="mobile-actions"><button data-action="dodge">DODGE</button><button data-action="attack" class="attack-action">⚔</button><button data-action="lock">◎</button><button data-action="heal">✚</button></div>
+    </div>
+    <div class="overlay" id="title-screen">
+      <div class="title-content"><div class="sigil">✦</div><div class="eyebrow">A SOULS-LIKE ACTION RPG</div><h1>THE HOLLOW<br><em>MARCH</em></h1><p>Beyond the drowned wood, something remembers your name.</p><button id="begin-btn" class="primary-btn">ENTER THE MARCH <span>→</span></button><div class="title-foot">A WORLD REMADE IN ASH <span>·</span> 2026</div></div>
+    </div>
+    <div class="overlay hidden" id="pause-screen"><div class="modal-card"><small>THE WORLD WAITS</small><h2>PAUSED</h2><p>Catch your breath, Wanderer.</p><button id="resume-btn" class="primary-btn">RETURN TO THE MARCH <span>→</span></button><div class="key-note">WASD to move · mouse to look · Esc to pause</div></div></div>
+    <div class="overlay hidden" id="death-screen"><div class="modal-card death-card"><div class="sigil">✦</div><small>YOUR LIGHT FADES</small><h2>YOU HAVE FALLEN</h2><p>The ash remembers. Rise again.</p><button id="rise-btn" class="primary-btn">RISE AT THE SHRINE <span>→</span></button></div></div>
+    <div class="toast" id="toast"></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
